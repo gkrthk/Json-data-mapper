@@ -21,8 +21,7 @@ const formatAsObj = (schema: any, data: any) => {
         data = data[0]; // Taking 1st object in array if data passed is array and schema is not list.
     }
     const keys = Object.keys(schema);
-    let resp = formatter(keys, schema, data);
-    return resp;
+    return formatter(keys, schema, data);    
 }
 
 
@@ -52,12 +51,12 @@ const formatter = (keys: any, schema: any, data: any) => {
             obj = { ...obj, [key]: transformFn(dataField, getParamsForTransformFn(dataField, data)) };
         } else {
             if (Array.isArray(dataField)) {
-                let item = JSON.stringify(dataField);
-                let mapFields = JSON.parse(item.replace(/\$/g, ""));
+                const item = JSON.stringify(dataField);
+                const mapFields = JSON.parse(item.replace(/\$/g, ""));
                 obj = { ...obj, [key]: mapMultipleFields(mapFields, data) }
             }
             else {
-                let mapField = dataField.replace(regex, "");
+                const mapField = dataField.replace(regex, "");
                 obj = { ...obj, [key]: data[mapField] };
             }
         }
@@ -74,7 +73,7 @@ const checkIfSchemaIsList = (schema: any) => {
 }
 
 const mapMultipleFields = (fields: any, item: any) => {
-    let dataset: any = [];
+    const dataset: any = [];
     fields.forEach((ele: any) => {
         if (ele instanceof Function) {
             dataset.push(transformFn(ele, getParamsForTransformFn(ele, item)));
@@ -85,13 +84,13 @@ const mapMultipleFields = (fields: any, item: any) => {
     return dataset;
 }
 
-const getParamsForTransformFn = (fn: Function, data: any) => {
+const getParamsForTransformFn = (fn: any, data: any) => {
     return getParameterNames(fn).map((param: any) => {
         return data[param];
     });
 }
 
-const transformFn = (fn: Function, params: Array<any>) => {
+const transformFn = (fn: any, params: any[]) => {
     return fn.apply(fn, params);
 }
 
