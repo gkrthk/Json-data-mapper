@@ -2,7 +2,7 @@
 
 ## Introduction
 
-For single page applications, data sources are API's which returns JSON responses. Most of the time we definitely require an adapter layer to transform data from API as needed by the UI layer. This module provides a single adaptive layer which will transform the API received JSON to the UI required format. This is a native typescript module.
+For single page applications, data sources are API's which returns JSON responses. Most of the time we definitely require an adapter layer to transform data from API as needed by the UI layer. This module provides a single adaptive layer which will transform the JSON received from API to the UI required format. This is a native typescript module.
 
 ## Get Started
 
