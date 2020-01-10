@@ -37,8 +37,8 @@ For single page applications, data sources are API's which returns JSON response
   - You can set `ObjectToFormatFromData` property to any object from the API response and the library will process the data only in that object specified, omitting all other objects in the API response.
   - The `format` object contains the actual format in which the data mapping has to be done.
     * Each `key` represents a property in the output Json.
-    * `dataField` property should be the key of the value to be processed from the API data. This can also accept a transform fn in which case the parameters to the function should be the keys of the value to be processed from the API data.
-    * `type` property can be set to `FUNCTION` if the dataField is provided with a transform function, else it need not be set.
+    * `dataField` property should be the key of the value to be processed from the API data. This can also accept a transform fn in which case the parameters to the function should be the keys of the value to be processed from the API data. You can pass a complete function as a string as shown in the sample.
+    * `type` property should be set to `FUNCTION` if the dataField is provided with a transform function, else it need not be set.
 
  ### Implementation
   In your application
