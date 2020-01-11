@@ -12,6 +12,7 @@ Single page applications will have JSON responses from the middleware API's. Mos
   
   Specify the JSON Schema to which the data has to be transformed in a Json file, in the below format
   
+  sample.json
   ```
   
   {
@@ -41,14 +42,14 @@ Single page applications will have JSON responses from the middleware API's. Mos
     * `type` property should be set to `FUNCTION` if the dataField is provided with a transform function, else it need not be set.
 
  ### Implementation
-  In your application
-  
-  ``` 
+  In your application, Import the json file and add below code.
+  ```   
   import { formatToSchema } from 'json-data-mapper';
   
   const transformedData = formatToSchema(schema, data);
   ```
-  
+ In the code above `schema ` is the Json schema imported from the json file, and `data` is your actual API response which has to be transformed.
+ 
  Using this library you can maintain all your transforms in a single JSON file and let the library do the data mapping for all the API's. if the API layer changes the JSON schema alone has to be tweaked as per needs avoiding any code change in the UI layer.
 
  ### Example

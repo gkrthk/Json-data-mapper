@@ -1,6 +1,6 @@
 {
   "name": "json-data-mapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Json Mapper Utility to transform Json to required format based on the schema given.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
