@@ -2,7 +2,7 @@ import { formatToSchema } from '../index';
 
 test('format json to Obj schema', () => {
     let data = {
-        name: "kartg",
+        name: "user",
         template: "test Template"
     }
     let schema = {
@@ -10,23 +10,23 @@ test('format json to Obj schema', () => {
             "label": {
                 dataField:"name"
             },
-            "OpenCases": {
+            "data": {
                 dataField :"template"
             },
             "transform":{
-                dataField: "(name,template)=>{return name+'%%'+template;}",
+                dataField: "(name,template)=>{return name+' has '+template;}",
                 type:"FUNCTION"
             } 
         }
     }
     let resp = formatToSchema(schema, data);
     console.log(resp);
-    expect(resp).toEqual({ label: 'kartg', OpenCases: 'test Template',transform: "kartg%%test Template" });
+    expect(resp).toEqual({ label: 'user', data: 'test Template',transform: "user has test Template" });
 });
 
 test('format json to List schema', () => {
     let data = {
-        name: "kartg",
+        name: "user",
         template: "test Template"
     }
     let schema = {
@@ -36,16 +36,16 @@ test('format json to List schema', () => {
             "label": {
                 dataField:"name"
             },
-            "OpenCases": {
+            "data": {
                 dataField :"template"
             },
             "transform":{
-                dataField: "(name,template)=>{return name+'%%'+template;}",
+                dataField: "(name,template)=>{return name+' having '+template;}",
                 type:"function"
             } 
         }
     }
     let resp = formatToSchema(schema, data);
     console.log(resp);
-    expect(resp).toEqual([{ label: 'kartg', OpenCases: 'test Template', transform: "kartg%%test Template"}]);
+    expect(resp).toEqual([{ label: 'user', data: 'test Template', transform: "user having test Template"}]);
 });

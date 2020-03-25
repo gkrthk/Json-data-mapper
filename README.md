@@ -2,7 +2,7 @@
 
 ## Introduction
 
-For single page applications, data sources are API's which returns JSON responses. Most of the time we definitely require an adapter layer to transform data from API as needed by the UI layer. This module provides a single adaptive layer which will transform the JSON received from API to the UI required format. This is a native typescript module.
+Single page applications will have JSON responses from the middleware API's. Most of the time we definitely require an adapter layer to transform data from API as needed by the UI layer. This module provides a single adaptive layer which will transform the JSON received from API to the UI required format. This is a native typescript module.
 
 ## Get Started
 
@@ -21,7 +21,7 @@ For single page applications, data sources are API's which returns JSON response
             "label": {
                 dataField:"name"
             },
-            "OpenCases": {
+            "data": {
                 dataField :"template"
             },
             "transform":{
@@ -50,6 +50,48 @@ For single page applications, data sources are API's which returns JSON response
   ```
   
  Using this library you can maintain all your transforms in a single JSON file and let the library do the data mapping for all the API's. if the API layer changes the JSON schema alone has to be tweaked as per needs avoiding any code change in the UI layer.
+
+ ### Example
+
+ This is a sample schema 
+
+ ```
+ {
+    isList:true,
+    ObjectToFormatFromData:'',
+    format: {
+      "label": {
+          dataField:"name"
+      },
+      "data": {
+          dataField :"template"
+      },
+      "transform":{
+          dataField: "(name,template)=>{return name+' has '+template;}",
+          type:"function"
+      } 
+    }
+  }
  
+ ```
+ Input Data
+
+ ```
+  {
+    name: "user",
+    template: "test Template"
+  }
+ ```
+ Transformed Data
+
+ ```
+  { 
+    label: 'user',
+    data: 'test Template',
+    transform: 'user has test Template' 
+  }
+ ```
+
+
  ## Contributor
   [@gkrthk](https://github.com/gkrthk)
