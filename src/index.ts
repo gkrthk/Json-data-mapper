@@ -6,7 +6,7 @@ export class JsonMapper{
     private DEFAULT_PARAMS:any = /=[^,]+/mg;
     private FAT_ARROWS:any = /=>.*$/mg;    
 
-    formatToSchema(schema: any, data: any) {
+    public formatToSchema(schema: any, data: any) {
         if (this.invalidSchema(schema) || !data) {
             return;
         }
