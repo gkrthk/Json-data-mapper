@@ -39,7 +39,6 @@
   "bugs": {
     "url": "https://github.com/gkrthk/Json-data-mapper/issues"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "homepage":"https://devxcorner.in/post/json-data-mapper-npm/",  
   "license": "MIT",
   "devDependencies": {    
