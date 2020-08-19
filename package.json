@@ -1,6 +1,6 @@
 {
   "name": "json-data-mapper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Json Mapper Utility to transform Json to required format based on the schema given.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,17 +15,33 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "keywords": ["json-mapper","json-adapter","json-transform","typescript","transform", "json", "mapper","format","node","response-mapper","parse","schema"],
+  "keywords": [
+    "json-mapper",
+    "json-adapter",
+    "json-transform",
+    "typescript",
+    "transform",
+    "json",
+    "mapper",
+    "format",
+    "node",
+    "response-mapper",
+    "parse",
+    "schema",
+    "json mapper",
+    "json transform"
+  ],
   "author": "gkrthk",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gkrthk/Json-data-mapper.git"
   },
   "bugs": {
-    "url":"https://github.com/gkrthk/Json-data-mapper/issues"
-  },  
+    "url": "https://github.com/gkrthk/Json-data-mapper/issues"
+  },
+  "homepage":"https://devxcorner.in/post/json-data-mapper-npm/",  
   "license": "MIT",
-  "devDependencies": {
+  "devDependencies": {    
     "@types/jest": "^24.0.25",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",

@@ -17,16 +17,16 @@ Single page applications will have JSON responses from the middleware API's. Mos
   
   {
         isList:true,
-        ObjectToFormatFromData:'',
+        data:'',
         format: {
             "label": {
-                dataField:"name"
+                sourceField:"name"
             },
             "data": {
-                dataField :"template"
+                sourceField :"template"
             },
             "transform":{
-                dataField: "(name,template)=>{return name+'%%'+template;}",
+                sourceField: "(name,template)=>{return name+'%%'+template;}",
                 type:"FUNCTION"
             } 
         }
@@ -35,11 +35,11 @@ Single page applications will have JSON responses from the middleware API's. Mos
    ```
  ### Build Schema
   - The `isList` property tells whether the output Json should be a list.
-  - You can set `ObjectToFormatFromData` property to any object from the API response and the library will process the data only in that object specified, omitting all other objects in the API response.
+  - You can set `data` property to any object from the API response and the library will process the data only in that object specified, omitting all other objects in the API response.
   - The `format` object contains the actual format in which the data mapping has to be done.
     * Each `key` represents a property in the output Json.
-    * `dataField` property should be the key of the value to be processed from the API data. This can also accept a transform fn in which case the parameters to the function should be the keys of the value to be processed from the API data. You can pass a complete function as a string as shown in the sample.
-    * `type` property should be set to `FUNCTION` if the dataField is provided with a transform function, else it need not be set.
+    * `sourceField`  - should be the key of the value to be processed from the API data. This can also accept a transform fn in which case the parameters to the function should be the keys of the value to be processed from the API data. You can pass a complete function as a string as shown in the sample.
+    * `type` - if the sourceField is provided with a transform function then should be set to `FUNCTION`. if its a property in output json then should be set to `FIELD`.
 
  ### Implementation
   In your application, Import the json file and add below code.
@@ -58,18 +58,17 @@ Single page applications will have JSON responses from the middleware API's. Mos
 
  ```
  {
-    isList:true,
-    ObjectToFormatFromData:'',
+    isList:true,    
     format: {
       "label": {
-          dataField:"name"
+          sourceField:"name"
       },
       "data": {
-          dataField :"template"
+          sourceField :"template"
       },
       "transform":{
-          dataField: "(name,template)=>{return name+' has '+template;}",
-          type:"function"
+          sourceField: "(name,template)=>{return name+' has '+template;}",
+          type:"FUNCTION"
       } 
     }
   }
