@@ -1,12 +1,7 @@
 import  { Types } from './types';
 
 export class JsonMapper{
-
-    private COMMENTS:any = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-    private DEFAULT_PARAMS:any = /=[^,]+/mg;
-    private FAT_ARROWS:any = /=>.*$/mg;    
-
-    public formatToSchema(schema: any, data: any) {
+    public static formatToSchema(schema: any, data: any) {
         if (this.invalidSchema(schema) || !data) {
             return;
         }
@@ -20,10 +15,14 @@ export class JsonMapper{
         }
     }
 
+    private static COMMENTS:any = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+    private static DEFAULT_PARAMS:any = /=[^,]+/mg;
+    private static FAT_ARROWS:any = /=>.*$/mg;
+
     /* 
     * Mapper to format Json to Object schema.
     */
-    private formatAsObj(schema: any, data: any) {
+    private static formatAsObj(schema: any, data: any) {
         if (Array.isArray(data)) {
             data = data[0]; // Taking 1st object in array if data passed is array and schema is not list.
         }
@@ -34,7 +33,7 @@ export class JsonMapper{
     /* 
     * Mapper to format Json to List schema.
     */
-    private formatAsList (schema: any, data: any) {
+    private static formatAsList (schema: any, data: any) {
         if (!Array.isArray(data)) {
             data = [data];
         }
@@ -47,7 +46,7 @@ export class JsonMapper{
     /* 
      * Processor Function which returns single transformed object. 
     */
-    private formatter (keys: any, schema: any, data: any) {
+    private static formatter (keys: any, schema: any, data: any) {
         const regex = /\$/g;
         let obj = {};
         keys.forEach((key: any) => {
@@ -70,15 +69,15 @@ export class JsonMapper{
         return obj;
     }
 
-    private invalidSchema (schema: any) {
+    private static invalidSchema (schema: any) {
         return !schema || !schema.format;
     }
 
-    private checkIfSchemaIsList (schema: any) {
+    private static checkIfSchemaIsList (schema: any) {
         return schema.isList;
     }
 
-    private mapMultipleFields (fields: any, item: any) {
+    private static mapMultipleFields (fields: any, item: any) {
         const dataset: any = [];
         fields.forEach((ele: any) => {
             if (ele instanceof Function) {
@@ -90,25 +89,27 @@ export class JsonMapper{
         return dataset;
     }
 
-    private getParamsForTransformFn(fn: any, data: any) {
+    private static getParamsForTransformFn(fn: any, data: any) {
 
         return this.getParameterNames(fn).map((param: any) => {
             return data[param];
         });
     }
 
-    private transformFn(fn: any, params: any[]){
+    private static transformFn(fn: any, params: any[]){
         return fn.apply(fn, params);
     }
 
 
-    private getParameterNames(fn:any){
+    private static getParameterNames(fn:any){
         const code = fn.toString().replace(this.COMMENTS, '').replace(this.FAT_ARROWS, '').replace(this.DEFAULT_PARAMS, '');
         const result = code.slice(code.indexOf('(') + 1, code.indexOf(')')).match(/([^\s,]+)/g);
         return result === null ? [] : result;
     }
-
+    
 }
+
+
 
 
 

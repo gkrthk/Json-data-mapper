@@ -2,10 +2,10 @@ import { JsonMapper } from '../index';
 describe('test suite', ()=>{
     let mapper:any;
     beforeEach(()=>{
-        mapper = new JsonMapper();
+        // mapper = new JsonMapper();
     });
     afterEach(() => {
-        mapper = null;
+        // mapper = null;
     })
 
     test('format json to Obj schema', () => {
@@ -27,7 +27,7 @@ describe('test suite', ()=>{
                 } 
             }
         }
-        let resp = mapper.formatToSchema(schema, data);
+        let resp = JsonMapper.formatToSchema(schema, data);
         console.log(resp);
         expect(resp).toEqual({ label: 'user', data: 'test Template',transform: "user has test Template" });
     });
@@ -53,7 +53,7 @@ describe('test suite', ()=>{
                 } 
             }
         }
-        let resp = mapper.formatToSchema(schema, data);
+        let resp = JsonMapper.formatToSchema(schema, data);
         console.log(resp);
         expect(resp).toEqual([{ label: 'user', data: 'test Template', transform: "user having test Template"}]);
     });

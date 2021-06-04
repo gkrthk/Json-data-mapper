@@ -44,9 +44,9 @@ Single page applications will have JSON responses from the middleware API's. Mos
  ### Implementation
   In your application, Import the json file and add below code.
   ```   
-  import { formatToSchema } from 'json-data-mapper';
+  import { JsonMapper } from 'json-data-mapper';
   
-  const transformedData = formatToSchema(schema, data);
+  const transformedData = JsonMapper.formatToSchema(schema, data);
   ```
  In the code above `schema ` is the Json schema imported from the json file, and `data` is your actual API response which has to be transformed.
  
